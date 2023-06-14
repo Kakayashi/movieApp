@@ -1,0 +1,46 @@
+version: '3.8'
+
+services:
+
+  php:
+    container_name: laravel
+    build: 
+      context: ./movie_games_api
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./:/var/www
+    networks:
+      - movies_network
+
+
+  database:
+    container_name: mysql
+    image: mysql:8.0
+    ports:
+      - "${DB_PORT}:3306"
+    environment:
+      - MYSQL_DATABASE=${DB_DATABASE}
+      - MYSQL_USER=${DB_USERNAME}
+      - MYSQL_PASSWORD=${DB_PASSWORD}
+      - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
+    volumes:
+      - movie_volume:/var/lib/mysql
+    networks:
+      - movies_network
+    
+  movie-app-front-main:
+      build: ./movie-app-front-main
+      container_name: movie-app-front-c
+      ports:
+        - '3000:3000'
+      stdin_open: true
+      tty: true
+
+volumes:
+  movie_volume:
+
+networks:
+  movies_network:
+    driver: bridge
+    

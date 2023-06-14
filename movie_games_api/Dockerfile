@@ -12,7 +12,7 @@ COPY --from=composer:2.5.7 /usr/bin/composer /usr/bin/composer
 
 ENV PORT=8000
 
-ENTRYPOINT ["movie_games_api/Docker/entrypoint.sh"]
+ENTRYPOINT ["Docker/entrypoint.sh"]
 
 
 

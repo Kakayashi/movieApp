@@ -14,7 +14,7 @@ else
     echo "env file exists."
 fi
 
-php artisan migrate
+php artisan migrate:fresh --seed --seeder=RoleSeeder
 php artisan key:generate
 php artisan cache:clear
 php artisan config:clear

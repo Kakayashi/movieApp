@@ -67,3 +67,9 @@ Route::group(['middleware' => 'api', 'prefix' => 'user', 'namespace' => 'App\Htt
     Route::get('/','UserController@index');
     Route::put('/update/{user}','UserController@update');
 });
+
+
+//GAMES ENDPOINTS
+Route::group([ 'prefix' => 'game', 'namespace' => 'App\Http\Controllers'], function(){
+    Route::get('/','GameController@index');
+});

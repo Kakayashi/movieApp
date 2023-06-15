@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('image');
-            $tabel->float('rating');
+            $table->float('rating');
             $table->longText('summary');
             $table->timestamps();
         });

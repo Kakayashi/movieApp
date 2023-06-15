@@ -20,7 +20,9 @@ Route::get('/', function () {
 
 use App\Http\Controllers\GenreController;
 use App\Http\Controllers\MovieController;
+use App\Http\Controllers\IGDBController;
 
 
 Route::get('/get-genres', [GenreController::class, 'getDataFromApi']);
 Route::get('/get-movies', [MovieController::class, 'getMovies']);
+Route::get('/get-games', [IGDBController::class, 'getData']);

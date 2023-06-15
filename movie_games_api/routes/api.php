@@ -47,6 +47,7 @@ Route::group(['prefix' => 'movie', 'namespace' => 'App\Http\Controllers'], funct
 //NOTES ENDPOINTS
 Route::group(['middleware' => 'api', 'prefix' => 'note', 'namespace' => 'App\Http\Controllers'], function() {
     Route::post('/add','NoteController@store');
+    Route::delete('/delete/{note}','NoteController@destroy');
 });
 
 
@@ -59,3 +60,10 @@ Route::group(['prefix' => 'export', 'namespace' => 'App\Http\Controllers'], func
 
 
 //FILES IMPORT
+
+
+//USER UPDATE
+
+Route::group(['middleware' => 'api', 'prefix' => 'user', 'namespace' => 'App\Http\Controllers'], function(){
+    Route::put('/update/{user}','UserController@update');
+});

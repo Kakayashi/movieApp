@@ -31,6 +31,7 @@ class AuthController extends Controller
             'name'=>'required',
             'email'=>'required|string|email|unique:users',
             'password'=>'required|string|confirmed|min:6',
+            'country_short'=>'required|string',
             'role_id'=>'required'
         ]);
 
@@ -112,7 +113,8 @@ class AuthController extends Controller
         return response()->json([
             'access_token' => $token,
             'token_type' => 'bearer',
-            'expires_in' => auth()->factory()->getTTL() * 60
+            'expires_in' => auth()->factory()->getTTL() * 60,
+            'role' => auth()->user()->role_id 
         ]);
     }
 

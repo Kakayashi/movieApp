@@ -60,9 +60,6 @@ return [
             'engine' => null,
             'options' => extension_loaded('pdo_mysql') ? array_filter([
                 PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
-                PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-                PDO::ATTR_EMULATE_PREPARES => true,
-                PDO::ATTR_ISOLATION_LEVEL => PDO::SQLSRV_TXN_READ_COMMITTED,
             ]) : [],
         ],
 

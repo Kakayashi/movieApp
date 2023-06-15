@@ -20,6 +20,7 @@ class NoteResource extends JsonResource
             'description' => $this->description,
             'user_id' => $this->user_id,
             'user' => User::find($this->user_id)->name,
+            'country_short' => User::find($this->user_id)->country_short,
             'movie_id' => $this->movie_id
         ];
     }

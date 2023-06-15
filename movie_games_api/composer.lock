@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f8bb1fd205027150581e59296d1f3798",
+    "content-hash": "bb7362dad6b26a056c1c67939f3e9fb5",
     "packages": [
         {
             "name": "brick/math",
@@ -2001,6 +2001,78 @@
                 "source": "https://github.com/Maatwebsite/Laravel-Excel/tree/master"
             },
             "time": "2014-07-10T09:06:07+00:00"
+        },
+        {
+            "name": "marcreichel/igdb-laravel",
+            "version": "3.8.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/marcreichel/igdb-laravel.git",
+                "reference": "385feec1299e6ef5160ed8fae495cc8dbb1624c0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/marcreichel/igdb-laravel/zipball/385feec1299e6ef5160ed8fae495cc8dbb1624c0",
+                "reference": "385feec1299e6ef5160ed8fae495cc8dbb1624c0",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "guzzlehttp/guzzle": "~6.0|~7.0",
+                "laravel/framework": "^8.40.0|^9.0|^10.0",
+                "nesbot/carbon": "^2.53.1",
+                "php": "^8.0.2"
+            },
+            "require-dev": {
+                "nunomaduro/collision": "^5.3|^6.1",
+                "nunomaduro/larastan": "^1.0|^2.0",
+                "orchestra/testbench": "^6.23|^7.0|^8.0",
+                "phpunit/phpunit": "^9.5.4",
+                "roave/security-advisories": "dev-latest"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "MarcReichel\\IGDBLaravel\\IGDBLaravelServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "MarcReichel\\IGDBLaravel\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Marc Reichel",
+                    "email": "mail@marcreichel.de"
+                }
+            ],
+            "description": "A Laravel wrapper for version 4 of the IGDB API (Apicalypse) including webhook handling",
+            "keywords": [
+                "api-wrapper",
+                "apicalypse",
+                "igdb",
+                "igdb-api",
+                "laravel",
+                "wrapper"
+            ],
+            "support": {
+                "issues": "https://github.com/marcreichel/igdb-laravel/issues",
+                "source": "https://github.com/marcreichel/igdb-laravel/tree/3.8.1"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/marcreichel",
+                    "type": "github"
+                }
+            ],
+            "time": "2023-05-19T14:50:29+00:00"
         },
         {
             "name": "monolog/monolog",

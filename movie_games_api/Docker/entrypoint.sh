@@ -1,5 +1,7 @@
 #!/bin/bash
 
+cd movie_games_api/
+
 if [ ! -f "vendor/autoload.php"]; then
     composer install --no-progresss --no-interaction
 fi
@@ -12,7 +14,7 @@ else
     echo "env file exists."
 fi
 
-php artisan migrate:fresh --seed --seeder=RoleSeeder
+php artisan migrate
 php artisan key:generate
 php artisan cache:clear
 php artisan config:clear

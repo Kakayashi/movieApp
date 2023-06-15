@@ -15,13 +15,7 @@ use Illuminate\Support\Facades\Http;
 
 
 class MovieController extends Controller
-{
-    
-    public function __construct()
-    {
-        $this->middleware('auth.role:admin', ['only' => ['getMovies']]);
-    }
-        
+{       
     
     /**
      * Display a listing of the resource.
@@ -50,7 +44,7 @@ class MovieController extends Controller
             }
         }
 
-        return new MovieCollection($movies->paginate(20));
+        return new MovieCollection($movies->paginate(20)->sortByDesc('vote_average'));
         
     }
 
@@ -123,14 +117,15 @@ class MovieController extends Controller
 
     public function getMovies() {
 
-        for($i = 1; $i <= 6; $i++){
+        for($i = 1; $i <= 5; $i++){
 
-            $response = Http::get("https://api.themoviedb.org/3/trending/movie/day?language=en-US&api_key=15237914842e160bf247366b6944f57e&page={$i}");
+            $response = Http::get("https://api.themoviedb.org/3/movie/now_playing?language=en-US&page={$i}&api_key=15237914842e160bf247366b6944f57e");
             $movies = $response->json()['results'];
 
             foreach($movies as $movieData){
                 $movie = new Movie();
 
+                $movie->id = $movieData['id'];
                 $movie->title = $movieData['title'];
                 $movie->overview = $movieData['overview'];
                 $movie->adult = $movieData['adult'];

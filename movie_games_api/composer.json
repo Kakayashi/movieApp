@@ -11,6 +11,7 @@
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
         "maatwebsite/excel": "*",
+        "marcreichel/igdb-laravel": "^3.8",
         "tymon/jwt-auth": "^2.0"
     },
     "require-dev": {

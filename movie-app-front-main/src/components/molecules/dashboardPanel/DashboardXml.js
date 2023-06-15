@@ -1,35 +1,43 @@
-import React from "react";
+import React, { useState } from "react";
 import {
 	DashboardContentTitle,
 	ImportWrapper,
 	ExportItem,
 } from "./DashboardPannel.style";
 import CustomButton from "../../atoms/button/CustomButton";
-import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 function DashboardXml() {
-	const navigate = useNavigate();
+	const [importMessage, setImportMessage] = useState("");
 
 	const handleExport = () => {
 		console.log("export xml");
 	};
 
-	const handleImport = () => {
-		var formData = new FormData();
-		var imagefile = document.querySelector("#file");
-		formData.append("file", imagefile.files[0]);
+	const handleImport = async () => {
+		setImportMessage("importing!");
+		const fileInput = document.getElementById("file");
+		const file = fileInput.files[0];
+		const formData = new FormData();
+		formData.append("plik", file);
 
-		console.log("eks");
+		try {
+			await axios.post("http://localhost:8000/api/import/json", formData);
+			setImportMessage("File uploaded successfully");
+		} catch (error) {
+			setImportMessage("Error uploading file: ");
+		}
 	};
 
 	return (
 		<>
 			<DashboardContentTitle>XML</DashboardContentTitle>
+			<span>{importMessage}</span>
 			<ImportWrapper>
 				<span>Import:</span>
 				<ExportItem>
 					<input id="file" type="file" />
-					<CustomButton text={"Import"} func={handleExport} />
+					<CustomButton text={"Import"} func={handleImport} />
 				</ExportItem>
 			</ImportWrapper>
 			<ImportWrapper>

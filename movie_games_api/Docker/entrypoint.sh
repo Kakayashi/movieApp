@@ -1,4 +1,5 @@
 #!/bin/bash
+cd movie_games_api/
 
 cd movie_games_api/
 

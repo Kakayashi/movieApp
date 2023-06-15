@@ -54,6 +54,7 @@ function RegisterForm() {
 			bodyFormData.append("password", password);
 			bodyFormData.append("password_confirmation", password);
 			bodyFormData.append("country_short", "PL"); //////////////////////////////////////////////////////////////////////////edit
+			bodyFormData.append("role_id", 2);
 
 			setValidationErrors(["Loading..."]);
 
@@ -130,10 +131,10 @@ function RegisterForm() {
 				/>
 			</FormItem>
 
-			<FormItem>
+			{/* <FormItem>
 				<span>Country</span>
 				<CountrySelect onSwitchChange={setCountry} val={country} />
-			</FormItem>
+			</FormItem> */}
 
 			<FormItem>
 				<ButtonWrapper onClick={handleRegister}>

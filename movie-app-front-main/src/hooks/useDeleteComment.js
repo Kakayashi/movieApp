@@ -26,7 +26,9 @@ const useDeleteComment = () => {
 			// Komentarz został pomyślnie usunięty
 		} catch (err) {
 			setError(err.message);
+			console.log("MIEEEEEEEEEEEDZIAla!", err);
 		} finally {
+			console.log("Comment Deleted!");
 			setIsLoading(false);
 		}
 	};

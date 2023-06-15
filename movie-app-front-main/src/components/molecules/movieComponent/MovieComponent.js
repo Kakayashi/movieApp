@@ -72,8 +72,12 @@ function MovieComponent({ movie }) {
 	};
 
 	const handleDelete = (commentId) => {
-		setCommentErrors(["Deleted"]);
-		deleteComment(commentId, accessToken);
+		if (role == "2") {
+			setCommentErrors(["Deleted"]);
+			deleteComment(commentId, accessToken);
+		} else {
+			setCommentErrors(["Only user can delete comments!"]);
+		}
 	};
 
 	const addComment = () => {
@@ -96,6 +100,7 @@ function MovieComponent({ movie }) {
 					},
 				})
 					.then(function (response) {
+						console.log("res", response);
 						setIsLoading2(false); // Ustawiamy isLoading na false po zakończeniu żądania
 						if (response.data.error) {
 							console.log("error");
@@ -276,10 +281,8 @@ function MovieComponent({ movie }) {
 					<span>Loading...</span>
 				) : (
 					comments.map((el) => (
-						<CommentWrapper>
-							{/* {role === "1" && (
-								<CommentDelete onClick={() => handleDelete(el.id)} />
-							)} */}
+						<CommentWrapper key={el.id}>
+							<CommentDelete onClick={() => handleDelete(el.id)} />
 							<CommentInfo>
 								<span>User: {el.user}</span>
 								<span>

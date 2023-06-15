@@ -1,34 +1,46 @@
-import React from "react";
+import React, { useState } from "react";
 import {
 	DashboardContentTitle,
 	ImportWrapper,
 	ExportItem,
 } from "./DashboardPannel.style";
 import CustomButton from "../../atoms/button/CustomButton";
+import axios from "axios";
 
 function DashboardJson() {
+	const [importMessage, setImportMessage] = useState("");
+
 	const handleExpoer = () => {
 		console.log("export json");
 	};
 
-	const handleImport = () => {
-		var formData = new FormData();
-		var imagefile = document.querySelector("#file");
-		formData.append("file", imagefile.files[0]);
+	const handleImport = async () => {
+		setImportMessage("importing!");
+		const fileInput = document.getElementById("file");
+		const file = fileInput.files[0];
+		const formData = new FormData();
+		formData.append("plik", file);
 
-		console.log("eks");
+		try {
+			await axios.post("http://localhost:8000/api/import/json", formData);
+			setImportMessage("File uploaded successfully");
+		} catch (error) {
+			setImportMessage("Error uploading file: ");
+		}
 	};
 
 	return (
 		<>
 			<DashboardContentTitle>Json</DashboardContentTitle>
+			<span>{importMessage}</span>
 			<ImportWrapper>
 				<span>Import:</span>
 				<ExportItem>
-					<input type="file" />
-					<CustomButton text={"Import"} fun={handleExpoer} />
+					<input type="file" id="file" />
+					<CustomButton text={"Import"} func={handleImport} />
 				</ExportItem>
 			</ImportWrapper>
+
 			<ImportWrapper>
 				<span>Export:</span>
 				<a href="http://localhost:8000/api/export/json">

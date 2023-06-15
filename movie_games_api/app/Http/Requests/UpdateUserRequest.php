@@ -29,7 +29,6 @@ class UpdateUserRequest extends FormRequest
             return [
                 'name' => ['required'],
                 'email' => ['required'],
-                'password' => ['required'],
                 'country_short' => ['required'],
                 'role_id' => ['required'],
             ];
@@ -37,7 +36,6 @@ class UpdateUserRequest extends FormRequest
             return [
                 'name' => ['sometimes','required'],
                 'email' => ['sometimes','required'],
-                'password' => ['sometimes','required'],
                 'country_short' => ['sometimes','required'],
                 'role_id' => ['sometimes','required'],
             ];

@@ -60,6 +60,10 @@ Route::group(['prefix' => 'export', 'namespace' => 'App\Http\Controllers'], func
 
 
 //FILES IMPORT
+Route::group(['prefix' => 'import', 'namespace' => 'App\Http\Controllers'], function() {
+    Route::post('/json','ImportController@fromJson');
+    Route::post('/xml','ImportController@fromXml');
+});
 
 
 //USER ENDPOINTS

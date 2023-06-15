@@ -14,6 +14,9 @@ class UserController extends Controller
         $this->middleware('auth.role:admin');
     }
 
+    public function index(){
+        return User::all();
+    }
 
     public function update(UpdateUserRequest $request,User $user){
         $user->update($request->all());

@@ -31,7 +31,7 @@ const CustomInput = styled(TextField)`
 	}
 `;
 
-function CustomInputComponent({ label, rows, value, setValue }) {
+function CustomInputComponent({ label, rows, value, setValue, disabled }) {
 	const handleChange = (event) => {
 		setValue(event.target.value);
 	};
@@ -43,6 +43,7 @@ function CustomInputComponent({ label, rows, value, setValue }) {
 			value={value}
 			onChange={handleChange}
 			rows={rows}
+			{...(disabled === true ? { disabled: true } : {})}
 			{...(rows > 1 ? { multiline: true } : {})}
 			{...(label === "Password" ? { type: "password" } : {})}
 		/>

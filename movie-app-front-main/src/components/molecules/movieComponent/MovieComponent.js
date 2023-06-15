@@ -21,6 +21,7 @@ import {
 	CommentInfo,
 	CommentNote,
 	StyledStatr2,
+	CommentDelete,
 } from "./MovieComponent.style";
 import Player from "../../atoms/player/Player";
 import useMovieVideos from "../../../hooks/useMovieVideos";
@@ -33,6 +34,7 @@ import CustomInputComponent from "../../atoms/input/CustomInput";
 import axios from "axios"; // Dodajemy import biblioteki Axios
 import CustomSlider from "../../atoms/customSlider/CustomSlider";
 import useComments from "../../../hooks/useComments";
+import useDeleteComment from "../../../hooks/useDeleteComment";
 
 function MovieComponent({ movie }) {
 	const clips = useMovieVideos(movie.id);
@@ -47,6 +49,9 @@ function MovieComponent({ movie }) {
 	const [isLoading2, setIsLoading2] = useState([]);
 	const [ratting, setRating] = useState([]);
 	const accessToken = sessionStorage.getItem("token");
+	const { isLoading3, error3, deleteComment } = useDeleteComment();
+
+	const role = sessionStorage.getItem("role");
 
 	const posterUrl = "https://image.tmdb.org/t/p/original/" + movie.poster_path;
 
@@ -66,9 +71,12 @@ function MovieComponent({ movie }) {
 		setRating(value);
 	};
 
+	const handleDelete = (commentId) => {
+		setCommentErrors(["Deleted"]);
+		deleteComment(commentId, accessToken);
+	};
+
 	const addComment = () => {
-		console.log("dzia;a", ratting, comment, accessToken);
-		console.log(comments);
 		if (!setIsLoading2(true)) {
 			if (accessToken) {
 				setIsLoading2(true);
@@ -269,6 +277,9 @@ function MovieComponent({ movie }) {
 				) : (
 					comments.map((el) => (
 						<CommentWrapper>
+							{/* {role === "1" && (
+								<CommentDelete onClick={() => handleDelete(el.id)} />
+							)} */}
 							<CommentInfo>
 								<span>User: {el.user}</span>
 								<span>

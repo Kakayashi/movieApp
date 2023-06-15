@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { AiFillStar } from "react-icons/ai";
+import { RiDeleteBin7Fill } from "react-icons/ri";
 
 export const MovieWrapper = styled.div`
 	display: flex;
@@ -126,6 +127,7 @@ export const CommentWrapper = styled.div`
 	margin: 20px 0;
 	border-radius: 10px;
 	color: #fff;
+	position: relative;
 `;
 
 export const CommentInfo = styled.div`
@@ -133,6 +135,20 @@ export const CommentInfo = styled.div`
 	flex-direction: row;
 	justify-content: space-around;
 	padding-top: 20px;
+`;
+
+export const CommentDelete = styled(RiDeleteBin7Fill)`
+	position: absolute;
+	width: 40px;
+	right: 10px;
+	top: 10px;
+	fill: ${({ theme }) => theme.colors.gold};
+	transition: all 0.3s ease-in-out;
+	cursor: pointer;
+
+	&:hover {
+		fill: ${({ theme }) => theme.colors.goldHover};
+	}
 `;
 
 export const CommentNote = styled.div`

@@ -56,6 +56,7 @@ function LoginForm() {
 					console.log(response.data);
 					setValidationError(["logged in"]);
 					sessionStorage.setItem("token", response.data.access_token);
+					sessionStorage.setItem("role", response.data.role);
 					console.log(response);
 					navigate(`/`);
 					return;

@@ -23,6 +23,7 @@ function NavBar() {
 	const [selectedMovie, setSelectedMovie] = useState(null);
 	const navigate = useNavigate();
 	const accessToken = sessionStorage.getItem("token");
+	const role = sessionStorage.getItem("role");
 
 	const handleItemClick = (movie) => {
 		console.log("movieClicked");
@@ -56,6 +57,7 @@ function NavBar() {
 
 	const logoutUser = () => {
 		sessionStorage.removeItem("token");
+		sessionStorage.removeItem("role");
 		// Dodaj dodatkowe czynności związane z wylogowaniem użytkownika
 		// np. przekierowanie na stronę logowania lub wyczyszczenie lokalnego stanu aplikacji
 
@@ -79,6 +81,7 @@ function NavBar() {
 						<StyledLink to="/">Home</StyledLink>
 						<StyledLink to="/ranking">Top 100</StyledLink>
 						<StyledLink to="/moviesAll">Movies</StyledLink>
+						<StyledLink to="/games">Games</StyledLink>
 						<StyledSearchWrapper>
 							<StyledSearch
 								value={search}
@@ -107,6 +110,9 @@ function NavBar() {
 						</StyledSearchWrapper>
 					</WrapperItem>
 					<WrapperItem>
+						{role === "1" && (
+							<StyledLink to="/dashboard"> Admin Dashboard</StyledLink>
+						)}
 						{accessToken ? (
 							<StyledLink marginRight={true} onClick={logoutUser} to="/login">
 								Logout

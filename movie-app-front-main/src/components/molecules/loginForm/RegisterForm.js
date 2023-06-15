@@ -10,6 +10,7 @@ import CustomInputComponent from "../../atoms/input/CustomInput";
 import CustomButton from "../../atoms/button/CustomButton";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import CountrySelect from "../../atoms/select/CountrySelect";
 
 function RegisterForm() {
 	const [name, setName] = useState("");
@@ -17,6 +18,7 @@ function RegisterForm() {
 	const [password, setPassword] = useState("");
 	const [validationErrors, setValidationErrors] = useState([]);
 	const [isLoading, setIsLoading] = useState(false);
+	const [country, setCountry] = useState(false);
 	const navigate = useNavigate();
 
 	const handleRegister = () => {
@@ -51,6 +53,7 @@ function RegisterForm() {
 			bodyFormData.append("email", email);
 			bodyFormData.append("password", password);
 			bodyFormData.append("password_confirmation", password);
+			bodyFormData.append("country_short", "PL"); //////////////////////////////////////////////////////////////////////////edit
 
 			setValidationErrors(["Loading..."]);
 
@@ -125,6 +128,11 @@ function RegisterForm() {
 					value={password}
 					setValue={setPassword}
 				/>
+			</FormItem>
+
+			<FormItem>
+				<span>Country</span>
+				<CountrySelect onSwitchChange={setCountry} val={country} />
 			</FormItem>
 
 			<FormItem>

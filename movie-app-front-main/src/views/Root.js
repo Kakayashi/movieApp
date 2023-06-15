@@ -7,6 +7,8 @@ import Movies from "../components/organisms/Movies";
 import Login from "../components/organisms/Login";
 import Register from "../components/organisms/Register";
 import MoviesAll from "../components/organisms/MoviesAll";
+import Dashboard from "../components/organisms/Dashboard";
+import Games from "../components/organisms/Games";
 
 function Root() {
 	return (
@@ -22,6 +24,8 @@ function Root() {
 					<Route path="/movies/:movieID" exact element={<Movies />} />
 					<Route path="/login" exact element={<Login />} />
 					<Route path="/register" exact element={<Register />} />
+					<Route path="/dashboard" exact element={<Dashboard />} />
+					<Route path="/games" exact element={<Games />} />
 				</Routes>
 			</>
 		</BrowserRouter>

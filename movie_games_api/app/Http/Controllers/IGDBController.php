@@ -3,14 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use MarcReichel\IGDBLaravel\Models\Game;
+use MarcReichel\IGDBLaravel\Models\Game as IGDB;
+use App\Models\Game;
+
 
 class IGDBController extends Controller
 {
 
     public function getData(){
 
-        $games = Game::with(['cover'])->get();
+        $games = IGDB::with(['cover'])->get();
         // foreach($games as $game){
         //     echo $game['name'];
         // }

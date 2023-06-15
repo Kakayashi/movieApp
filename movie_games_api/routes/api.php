@@ -62,8 +62,8 @@ Route::group(['prefix' => 'export', 'namespace' => 'App\Http\Controllers'], func
 //FILES IMPORT
 
 
-//USER UPDATE
-
+//USER ENDPOINTS
 Route::group(['middleware' => 'api', 'prefix' => 'user', 'namespace' => 'App\Http\Controllers'], function(){
+    Route::get('/','UserController@index');
     Route::put('/update/{user}','UserController@update');
 });

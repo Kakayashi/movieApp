@@ -45,24 +45,24 @@ Route::group(['prefix' => 'movie', 'namespace' => 'App\Http\Controllers'], funct
 }); 
 
 //NOTES ENDPOINTS
-Route::group(['middleware' => 'api', 'prefix' => 'note', 'namespace' => 'App\Http\Controllers'], function() {
-    Route::post('/add','NoteController@store');
-    Route::delete('/delete/{note}','NoteController@destroy');
+Route::group(['prefix' => 'note', 'namespace' => 'App\Http\Controllers'], function() {
+    Route::post('/add','NoteController@store')->middleware('auth.role:user');
+    Route::delete('/delete/{note}','NoteController@destroy')->middleware('auth.role:admin');
 });
 
 
 //FILES EXPORT
 
 Route::group(['prefix' => 'export', 'namespace' => 'App\Http\Controllers'], function() {
-    Route::get('/json','ExportController@exportToJson');
-    Route::get('/xml','ExportController@exportToXML');
+    Route::get('/json','ExportController@exportToJson')->middleware('auth.role:admin');
+    Route::get('/xml','ExportController@exportToXML')->middleware('auth.role:admin');
 });
 
 
 //FILES IMPORT
 Route::group(['prefix' => 'import', 'namespace' => 'App\Http\Controllers'], function() {
-    Route::post('/json','ImportController@fromJson');
-    Route::post('/xml','ImportController@fromXml');
+    Route::post('/json','ImportController@fromJson')->middleware('auth.role:admin');
+    Route::post('/xml','ImportController@fromXml')->middleware('auth.role:admin');
 });
 
 
@@ -76,4 +76,12 @@ Route::group(['middleware' => 'api', 'prefix' => 'user', 'namespace' => 'App\Htt
 //GAMES ENDPOINTS
 Route::group([ 'prefix' => 'game', 'namespace' => 'App\Http\Controllers'], function(){
     Route::get('/','GameController@index');
+});
+
+
+//ISOLATION TEST 
+Route::group([ 'prefix' => 'isolation', 'namespace' => 'App\Http\Controllers'], function(){
+    Route::get('/repeatale','IsolationController@repeatale');
+    Route::get('/committed','IsolationController@committed');
+    Route::get('/uncommitted','IsolationController@uncommitted');
 });

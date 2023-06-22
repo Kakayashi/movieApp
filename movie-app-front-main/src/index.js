@@ -6,19 +6,19 @@ import Root from './views/Root';
 import { ThemeProvider } from "styled-components";
 import { theme } from './assets/styles/theme';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-
+import { MyContextProvider } from './hooks/MyContextProvider';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
-      <Root />
+      {/* Dodajemy MyContextProvider jako rodzica */}
+      <MyContextProvider>
+        <Root />
+      </MyContextProvider>
     </ThemeProvider>
   </React.StrictMode>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();

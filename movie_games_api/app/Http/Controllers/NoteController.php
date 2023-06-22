@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Note;
 use App\Http\Requests\StoreNoteRequest;
 use App\Http\Requests\UpdateNoteRequest;
+use App\Http\Resources\NoteResource;
 use Illuminate\Http\Request;
 use App\Models\Movie;
+
 
 class NoteController extends Controller
 {
@@ -71,7 +73,7 @@ class NoteController extends Controller
      */
     public function show(Note $note)
     {
-        return NoteResource($note);
+        return new NoteResource($note);
     }
 
     /**

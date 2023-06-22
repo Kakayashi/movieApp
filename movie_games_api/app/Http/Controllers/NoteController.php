@@ -71,7 +71,7 @@ class NoteController extends Controller
      */
     public function show(Note $note)
     {
-        //
+        return NoteResource($note);
     }
 
     /**
@@ -94,7 +94,7 @@ class NoteController extends Controller
      */
     public function update(UpdateNoteRequest $request, Note $note)
     {
-        //
+        $note->update($request->all());
     }
 
     /**

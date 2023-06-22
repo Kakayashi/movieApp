@@ -48,6 +48,8 @@ Route::group(['prefix' => 'movie', 'namespace' => 'App\Http\Controllers'], funct
 Route::group(['prefix' => 'note', 'namespace' => 'App\Http\Controllers'], function() {
     Route::post('/add','NoteController@store')->middleware('auth.role:user');
     Route::delete('/delete/{note}','NoteController@destroy')->middleware('auth.role:admin');
+    Route::patch('update/{note}','NoteController@update');
+    Route::get('/{note}','NoteController@show');
 });
 
 

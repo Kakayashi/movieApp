@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { CommentWrapper } from './ComentComponent.style';
 import { useParams } from "react-router-dom";
+import { CommentWrapper,CommentData,Comment,CommentTitle } from './ComentComponent.style';
 
 
 function ComentComponent() {
@@ -26,15 +26,18 @@ function ComentComponent() {
   return (
     <CommentWrapper>
       {isLoading ? (
-        <h1>Loading...</h1>
+        <CommentTitle>Loading...</CommentTitle>
       ) : (
-        <div>
-          <h2>Comment:</h2>
-          <div>description: {comment.description}</div>
-          <div>amount: {comment.amount}</div>
-          <div>user: {comment.user}</div>
-          <div>movie_title: {comment.movie_title}</div>
-        </div>
+        <>
+        <CommentTitle>Comment info:</CommentTitle>
+        <Comment>
+          <CommentData><span>description: </span> {comment.description}</CommentData>
+          <CommentData><span>amount: </span> {comment.amount}</CommentData>
+          <CommentData><span>user: </span> {comment.user}</CommentData>
+          <CommentData><span>movie_title: </span> {comment.movie_title}</CommentData>
+          <CommentData><span>movie_id: </span> {comment.movie_id}</CommentData>
+        </Comment>
+        </>
       )}
     </CommentWrapper>
   );

@@ -2,7 +2,7 @@ PROJEKT INTEGRACJA SYSTEMÓW POLITECHNIKA LUBELSKA
 
 Temat: Zestawienie rankingu filmów i gier na podstawie ocen użykwników
 Skład:  Karol Krawczyński
-		Karol Kowalik
+	Karol Kowalik
 Instrukcja uruchomienia:
 	Żeby uruchmomić projekt trzeba mieć zainstalowany na komputerze:
 	-node

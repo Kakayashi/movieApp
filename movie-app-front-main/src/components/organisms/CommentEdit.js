@@ -9,6 +9,7 @@ import axios from 'axios';
 function CommentEdit() {
   const [amount, setAmount] = useState('');
   const [text, setText] = useState('');
+  const [message, setMessage] = useState('');
   const [comment, setComment] = useState('');
   const [isLoading, setIsLoading] = useState(true);
   const { commentID } = useParams();
@@ -33,15 +34,17 @@ function CommentEdit() {
       description: text,
       amount: amount
     };
-    console.log("url", `http://localhost:8000/api/note/update/${commentID}`)
+    setMessage("Editing!")
     axios
       .put(`http://localhost:8000/api/note/update/${commentID}`, updatedComment)
       .then(response => {
         console.log('Comment updated:', response);
-        // Dodaj tutaj odpowiednie informacje o aktualizacji komentarza
+        setMessage("Succes!")
       })
       .catch(error => {
         console.log(error);
+        setMessage("Error!")
+
       });
   };
 
@@ -54,8 +57,9 @@ function CommentEdit() {
       ) : (
         <EditWrapper>
           <h1>Edit</h1>
-          <CustomInputComponent label={'User'} value={amount} setValue={setAmount} />
-          <CustomInputComponent label={'Text'} rows={4} value={text} setValue={setText} />
+          <CustomInputComponent label={'Amount'} value={amount} setValue={setAmount} numeric={true} />
+          <CustomInputComponent label={'Description'} rows={4} value={text} setValue={setText} />
+          {<span>{message}</span>}
           <CustomButton text={'Edit'} func={handleEdit} />
         </EditWrapper>
       )}

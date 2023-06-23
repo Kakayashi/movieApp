@@ -9,6 +9,8 @@ import axios from "axios";
 
 function DashboardJson() {
 	const [importMessage, setImportMessage] = useState("");
+	const accessToken = sessionStorage.getItem("token");
+
 
 	const handleExpoer = () => {
 		console.log("export json");
@@ -22,11 +24,15 @@ function DashboardJson() {
 		formData.append("plik", file);
 
 		try {
-			await axios.post("http://localhost:8000/api/import/json", formData);
+			await axios.post("http://localhost:8000/api/import/json", formData, {
+			  headers: {
+				Authorization: `Bearer ${accessToken}`
+			  },
+			});
 			setImportMessage("File uploaded successfully");
-		} catch (error) {
-			setImportMessage("Error uploading file: ");
-		}
+		  } catch (error) {
+			setImportMessage("Error uploading file: " + error.message);
+		  }
 	};
 
 	return (

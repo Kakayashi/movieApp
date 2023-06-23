@@ -72,7 +72,7 @@ function MovieComponent({ movie }) {
 	};
 
 	const handleDelete = (commentId) => {
-		if (role == "2") {
+		if (role == "1") {
 			setCommentErrors(["Deleted"]);
 			deleteComment(commentId, accessToken);
 		} else {
@@ -282,7 +282,7 @@ function MovieComponent({ movie }) {
 				) : (
 					comments.map((el) => (
 						<CommentWrapper key={el.id}>
-							<CommentDelete onClick={() => handleDelete(el.id)} />
+							{ role==="1" && <CommentDelete onClick={() => handleDelete(el.id)} />}
 							<CommentInfo>
 								<span>User: {el.user}</span>
 								<span>

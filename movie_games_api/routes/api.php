@@ -54,8 +54,8 @@ Route::group(['prefix' => 'note', 'namespace' => 'App\Http\Controllers'], functi
 //FILES EXPORT
 
 Route::group(['prefix' => 'export', 'namespace' => 'App\Http\Controllers'], function() {
-    Route::get('/json','ExportController@exportToJson')->middleware('auth.role:admin');
-    Route::get('/xml','ExportController@exportToXML')->middleware('auth.role:admin');
+    Route::get('/json','ExportController@exportToJson');
+    Route::get('/xml','ExportController@exportToXML');
 });
 
 

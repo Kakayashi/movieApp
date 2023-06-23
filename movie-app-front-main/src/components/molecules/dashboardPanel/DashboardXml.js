@@ -9,6 +9,8 @@ import axios from "axios";
 
 function DashboardXml() {
 	const [importMessage, setImportMessage] = useState("");
+	const accessToken = sessionStorage.getItem("token");
+
 
 	const handleExport = () => {
 		console.log("export xml");
@@ -22,7 +24,11 @@ function DashboardXml() {
 		formData.append("plik", file);
 
 		try {
-			await axios.post("http://localhost:8000/api/import/json", formData);
+			await axios.post("http://localhost:8000/api/import/json", formData , {
+				headers: {
+				  Authorization: `Bearer ${accessToken}`,
+				},
+			});
 			setImportMessage("File uploaded successfully");
 		} catch (error) {
 			setImportMessage("Error uploading file: ");

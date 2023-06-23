@@ -9,6 +9,9 @@ import Register from "../components/organisms/Register";
 import MoviesAll from "../components/organisms/MoviesAll";
 import Dashboard from "../components/organisms/Dashboard";
 import Games from "../components/organisms/Games";
+import MoviesComments from "../components/organisms/MoviesComments";
+import Comment from "../components/organisms/Comment";
+import CommentEdit from "../components/organisms/CommentEdit";
 
 function Root() {
 	return (
@@ -26,6 +29,9 @@ function Root() {
 					<Route path="/register" exact element={<Register />} />
 					<Route path="/dashboard" exact element={<Dashboard />} />
 					<Route path="/games" exact element={<Games />} />
+					<Route path="/movies&comments" exact element={<MoviesComments />} />
+					<Route path="/comment/:commentID" exact element={<Comment />} />
+					<Route path="/commentEdit/:commentID" exact element={<CommentEdit />} />
 				</Routes>
 			</>
 		</BrowserRouter>

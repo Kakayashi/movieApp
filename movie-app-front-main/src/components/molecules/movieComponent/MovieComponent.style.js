@@ -151,6 +151,8 @@ export const CommentDelete = styled(RiDeleteBin7Fill)`
 	}
 `;
 
+
+
 export const CommentNote = styled.div`
 	font-size: 20px;
 	padding: 20px;

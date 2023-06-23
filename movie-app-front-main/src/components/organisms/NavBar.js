@@ -82,6 +82,7 @@ function NavBar() {
 						<StyledLink to="/ranking">Top 100</StyledLink>
 						<StyledLink to="/moviesAll">Movies</StyledLink>
 						<StyledLink to="/games">Games</StyledLink>
+						<StyledLink to="/movies&comments">Movies&Comments</StyledLink>
 						<StyledSearchWrapper>
 							<StyledSearch
 								value={search}
